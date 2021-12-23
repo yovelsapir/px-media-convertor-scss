@@ -1,0 +1,61 @@
+{
+	"author": "yovelsapir",
+	"name": "px-media-convertor-scss",
+	"displayName": "px-media-convertor-scss",
+	"description": "Convert px to vw by using sass function and the current media query",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.pxToVw",
+        "onCommand:extension.vwToPx",
+        "onCommand:extension.pxTovwAndVwToPx"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"configuration":{
+            "title": "Px to vw function configuration",
+            "properties": {
+                "px-to-vw.viewportWidth": {
+                    "type": "integer",
+                    "default": 1920,
+                    "description": "viewportWidth"
+                },
+                "px-to-vw.unitPrecision": {
+                    "type": "integer",
+                    "default": 3,
+                    "description": "unitPrecision"
+                }
+			}
+		},
+		"commands": [
+			{
+				"command": "extension.pxTovwAndVwToPx",
+				"title": "Px to vw, and vw to px. Converts selected text from px to vw, and vw to px."
+			}
+		],
+		"keybindings": [
+            {"command": "extension.pxTovwAndVwToPx","key": "Alt+z"}
+        ]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.63.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"eslint": "^8.1.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.3",
+		"typescript": "^4.4.4",
+		"@vscode/test-electron": "^1.6.2"
+	}
+}
